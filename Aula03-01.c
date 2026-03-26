@@ -1,16 +1,27 @@
 #include <stdio.h>
 #include <locale.h>
+
 #define V 7
 
 int mAdj[V][V];
+int cor[] = {50,51,52};
+
+void popular();
+void buscarEmLargura();
+void imprimirMatriz();
+void bicoloracao();
+
 
 void main(void){
+	setlocale(LC_ALL,"Portuguese");
 	popular();
+	imprimirMatriz();
+	bicoloracao();
+	printf("\n\n");
 	imprimirMatriz();
 }
 
 void popular(){
-		setlocale(LC_ALL,"Portuguese");
 	//vertice 1			//vertice 2			//vertice 3
 	mAdj[0][1] = 1;		mAdj[1][0] = 1;		mAdj[2][1] = 1;
 	mAdj[0][3] = 1;		mAdj[1][2] = 1;		mAdj[2][3] = 1;
@@ -39,7 +50,7 @@ void buscaEmLargura(){
 
 
 void imprimirMatriz(){
-		int i, j;
+	int i, j;
 	for(i = 0; i < V; i++){
 		for(j =0; j < V; j++){
 			printf("%d\t",mAdj[i][j]);
@@ -48,5 +59,19 @@ void imprimirMatriz(){
 	}
 }
 
-
-
+void bicoloracao(){
+	int i, j, k;
+	for(i = 0; i < V; i++){
+		k = 0;
+		if(mAdj[i][i] == 0) mAdj[i][i] = cor[k];
+		for(j =0; j < V; j++){
+			if(mAdj[i][j] == 1){
+				if(mAdj[j][j] == mAdj [i][i]){
+					k = k + 1;
+					mAdj [i][i] = cor [k];
+					j = 0;
+				}
+			}
+		}
+	}
+}
