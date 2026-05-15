@@ -2,10 +2,10 @@
 #include <stdlib.h>
 #include <locale.h>
 
-#define V 5
-#define qAresta 20
+#define V 7
+#define qAresta 42 
 #define nullAresta 0
-#define qtdComb 24
+#define qtdComb 720  // Numero de vertices -1 (!fatorial)
 
 // como representar em lista de arestas?
 struct Aresta{
@@ -55,7 +55,7 @@ void main(void){
 	imprimirMatriz();
 	transformarMatrizEmAresta();
 	imprimirListaAresta();
-	caixeiro(3);
+	caixeiro(5);
 	imprimirCaixeiro();
 	buscarMenorRota();	   
 
@@ -74,34 +74,64 @@ void inicializar(){
 			mAdj[i][j] = nullAresta;
 			
 	//vertice 0
-	mAdj[0][1] = 2; 
-	mAdj[0][2] = 1;
-	mAdj[0][3] = 12;
-	mAdj[0][4] = 3;
+	mAdj[0][1] = 3; 
+	mAdj[0][2] = 4;
+	mAdj[0][3] = 11;
+	mAdj[0][4] = 2;
+	mAdj[0][5] = 5;
+	mAdj[0][6] = 3;
+	
 		
 	//vertice 1
-	mAdj[1][0] = 2;
-	mAdj[1][2] = 3; 
-	mAdj[1][3] = 6;
-	mAdj[1][4] = 4; 
+	mAdj[1][0] = 3;
+	mAdj[1][2] = 8;
+	mAdj[1][3] = 9;
+	mAdj[1][4] = 1;
+	mAdj[1][5] = 6;
+	mAdj[1][6] = 4;
+
 		
 	//vertice 2
-	mAdj[2][0] = 1;
-	mAdj[2][1] = 3;
-	mAdj[2][3] = 1;
-	mAdj[2][4] = 5;  
+	mAdj[2][0] = 4;
+	mAdj[2][1] = 8;
+	mAdj[2][3] = 7;
+	mAdj[2][4] = 3;
+	mAdj[2][5] = 9;
+	mAdj[2][6] = 7;
+ 
 	
 	//vertice 3
-	mAdj[3][0] = 12;
-	mAdj[3][1] = 6;
-	mAdj[3][2] = 1;
-	mAdj[3][4] = 15;
-	
+	mAdj[3][0] = 11;
+	mAdj[3][1] = 9;
+	mAdj[3][2] = 7;
+	mAdj[3][4] = 12;
+	mAdj[3][5] = 6;
+	mAdj[3][6] = 8;
+
 	//vertice 4
-	mAdj[4][0] = 3;
-	mAdj[4][1] = 4; 
-	mAdj[4][2] = 5;
-	mAdj[4][3] = 15;
+	mAdj[4][0] = 2;
+	mAdj[4][1] = 1;
+	mAdj[4][2] = 3;
+	mAdj[4][3] = 12;
+	mAdj[4][5] = 4;
+	mAdj[4][6] = 10;
+	
+	//vertice 5
+	mAdj[5][0] = 5;
+	mAdj[5][1] = 6;
+	mAdj[5][2] = 9;
+	mAdj[5][3] = 6;
+	mAdj[5][4] = 7;
+	mAdj[5][6] = 15;
+	
+	//vertice 6
+	mAdj[6][0] = 3;
+	mAdj[6][1] = 4;
+	mAdj[6][2] = 7;
+	mAdj[6][3] = 8;
+	mAdj[6][4] = 10;
+	mAdj[6][5] = 15;
+
 	
 }
 
